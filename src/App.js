@@ -17,8 +17,26 @@ const App = () => {
     }
   }, [sort]);
 
+  // const handleFilterChange = (e) => {
+  //   const inputValue = e.target.value;
+  //   setFilter(inputValue);
+  // };
+
   const handleFilterChange = (e) => {
-    setFilter(e.target.value);
+    const inputValue = e.target.value;
+    setFilter(inputValue);
+
+    // Filter products based on the input value as the user types
+    const filteredProducts = productData.pproducts.filter((product) => {
+      const words = product.title.split(" ");
+      const match = words.some((word) =>
+        word.toLowerCase().startsWith(inputValue.toLowerCase())
+      );
+      return match;
+    });
+
+    // Update the filtered products in the state
+    setPproducts(filteredProducts);
   };
 
   const handleSortChange = (e) => {
