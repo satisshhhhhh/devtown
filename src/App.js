@@ -51,6 +51,51 @@ const App = () => {
     return match;
   });
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productsPerPage] = useState(8);
+
+  // Change page
+  const handlePageChange = (newPage) => {
+    setCurrentPage(newPage);
+  };
+
+  // Get current products
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(
+    indexOfFirstProduct,
+    indexOfLastProduct
+  );
+
+  const pageNumbers = [];
+  for (
+    let i = 1;
+    i <= Math.ceil(filteredProducts.length / productsPerPage);
+    i++
+  ) {
+    pageNumbers.push(i);
+  }
+
+  const Pagination = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  `;
+
+  const PageNumber = styled.button`
+    background-color: #f9f9f9;
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f1f1f1;
+    }
+  `;
+
   const Container = styled.div`
     height: 60px;
     background-color: black;
@@ -192,7 +237,7 @@ const App = () => {
           <h2>Loading...</h2>
         ) : (
           <ProductList>
-            {filteredProducts.map((product) => (
+            {currentProducts.map((product) => (
               <Product key={product.id}>
                 <ProductTitle>{product.title}</ProductTitle>
                 <ProductImageContainer>
@@ -206,6 +251,13 @@ const App = () => {
             ))}
           </ProductList>
         )}
+        <Pagination>
+          {pageNumbers.map((number) => (
+            <PageNumber key={number} onClick={() => handlePageChange(number)}>
+              {number}
+            </PageNumber>
+          ))}
+        </Pagination>
       </div>
     </>
   );
