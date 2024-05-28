@@ -11,9 +11,9 @@ const App = () => {
 
   useEffect(() => {
     if (sort === "asc") {
-      setPproducts(pproducts.sort((a, b) => b.price - a.price));
+      setPproducts((prevProducts) => [...prevProducts].sort((a, b) => a.price - b.price));
     } else {
-      setPproducts(pproducts.sort((a, b) => a.price - b.price));
+      setPproducts((prevProducts) => [...prevProducts].sort((a, b) => b.price - a.price));
     }
   }, [sort]);
 
@@ -23,22 +23,25 @@ const App = () => {
   // };
 
   const handleFilterChange = (e) => {
-    const inputValue = e.target.value;
+    const inputValue = e.target.value.trim();
     setFilter(inputValue);
-
+  
     // Filter products based on the input value as the user types
     const filteredProducts = productData.pproducts.filter((product) => {
-      const words = product.title.split(" ");
-      const match = words.some((word) =>
-        word.toLowerCase().startsWith(inputValue.toLowerCase())
+      const wordsInTitle = product.title.split(/\s+/);
+      const wordsInDescription = product.description.split(/\s+/);
+      const allWords = [...wordsInTitle, ...wordsInDescription];
+  
+      return allWords.some((word) =>
+        word.toLowerCase().includes(inputValue.toLowerCase())
       );
-      return match;
     });
-
+  
     // Update the filtered products in the state
     setPproducts(filteredProducts);
   };
 
+  
   const handleSortChange = (e) => {
     setSort(e.target.value);
   };
@@ -81,10 +84,19 @@ const App = () => {
     justify-content: center;
     align-items: center;
     gap: 8px;
+    padding: 0 2rem 2rem 0 ;
+  `;
+
+  const Title = styled.h1`
+    color: white;
+    display: flex;
+    justify-cotent: center;
+    align-items: center;
+    margin-right: 2rem;
   `;
 
   const PageNumber = styled.button`
-    background-color: #f9f9f9;
+    background-color: #dcdedd;
     padding: 8px 16px;
     border-radius: 8px;
     border: none;
@@ -97,12 +109,12 @@ const App = () => {
   `;
 
   const Container = styled.div`
-    height: 60px;
+    height: 90px;
     background-color: black;
   `;
 
   const Wrapper = styled.div`
-    padding: 10px 20px;
+    padding: 20px 20px;
     display: flex;
     justify-content: center;
   `;
@@ -113,7 +125,7 @@ const App = () => {
     align-items: center;
     border: 1px solid lightgrey;
     color: white;
-    padding: 5px;
+    padding: 8px;
     width: 50%;
     margin-right: 1rem;
   `;
@@ -128,10 +140,13 @@ const App = () => {
   `;
 
   const ProductList = styled.div`
+    padding: 0 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 25px;
     margin: 32px 0;
+    align-self: center;
+    justify-self: center;
   `;
 
   // const Product = styled.div`
@@ -185,7 +200,7 @@ const App = () => {
   `;
 
   const ProductImage = styled.img`
-    width: 80%;
+    width: 100%;
     height: 90%;
     object-fit: cover;
     aspect-ratio: 4 / 3;
@@ -216,7 +231,7 @@ const App = () => {
       <div className="App">
         <Container>
           <Wrapper>
-            <SearchContainer>
+            {/* <SearchContainer>
               <Input
                 type="text"
                 placeholder="Search Products"
@@ -224,8 +239,9 @@ const App = () => {
                 onChange={handleFilterChange}
               />
               <img src={SearchIcon} style={{ width: "30px" }} />
-            </SearchContainer>
-            <select value={sort} onChange={handleSortChange}>
+            </SearchContainer> */}
+            <Title>Anime Merchandise</Title>
+            <select value={sort} onChange={handleSortChange} style={{ padding: '10px' }}>
               <option value="asc">Low to High</option>
               <option value="desc">High to Low</option>
             </select>

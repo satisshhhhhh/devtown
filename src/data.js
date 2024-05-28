@@ -45,7 +45,7 @@ export const productData = {
       title: "Tokyo Revengers Bomber Jacket",
       description:
         "This is Tokyo Revegers Bomber Jacket one of the very cool jacket you can get, super fine, super cool, looks so attractive on onself.",
-      price: "1400",
+      price: "1800",
     },
     {
       id: 2,
@@ -54,16 +54,16 @@ export const productData = {
       title: "Naruto T-Shirt",
       description:
         "This is one of the very cool Naruto Kurama Mode tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "700",
     },
     {
       id: 3,
       image:
-        "https://www.comicsense.store/wp-content/uploads/2022/04/walhalla.jpg.webp",
-      title: "Walhalla T-Shirt",
+        "https://www.comicsense.store/wp-content/uploads/2023/12/pseudosorceror_hoodie-listing4-scaled.jpg.webp",
+      title: "Geto Sorcerer (Oversize Drop-Shoulder)",
       description:
-        "This is one of the very cool Tokyo Revengers Walhalla tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Pseudo Sorcerer (Oversize Drop-Shoulder) you can get, super fine, super cool, looks so attractive on onself.",
+      price: "2500",
     },
     {
       id: 4,
@@ -72,7 +72,7 @@ export const productData = {
       title: "Walhalla T-Shirt",
       description:
         "This is one of the very cool Tokyo Revengers Walhalla tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "480",
     },
     {
       id: 5,
@@ -80,8 +80,8 @@ export const productData = {
         "https://www.comicsense.store/wp-content/uploads/2023/05/1.jpg",
       title: "Gojo Satoru T-Shirt",
       description:
-        "This is one of the very cool Jujtsu Kaisen Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Jujtsu Kaisen - JJK Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
+      price: "900",
     },
     {
       id: 6,
@@ -90,16 +90,16 @@ export const productData = {
       title: "Itachi Uchiha T-Shirt",
       description:
         "This is one of the very cool Naruto Itachi Uchiha tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "750",
     },
     {
       id: 7,
       image:
-        "https://www.comicsense.store/wp-content/uploads/2022/11/tokyorevengers_tokyomanji_bomberjacket_listing7_hitanshi-scaled.jpg",
-      title: "Tokyo Revengers Bomber Jacket",
+        "https://www.comicsense.store/wp-content/uploads/2021/10/giyu_bomber_jacket_comicsense.jpg.webp",
+      title: "Water Pillar Bomber Jacket",
       description:
-        "This is Tokyo Revegers Bomber Jacket one of the very cool jacket you can get, super fine, super cool, looks so attractive on onself.",
-      price: "1400",
+        "This is Demon Slayer Water Hasihra Bomber Jacket one of the very cool jacket you can get, super fine, super cool, looks so attractive on onself.",
+      price: "1600",
     },
     {
       id: 8,
@@ -117,16 +117,7 @@ export const productData = {
       title: "Brahman T-Shirt",
       description:
         "This is one of the very cool Tokyo Revengers Brahman tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
-    },
-    {
-      id: 10,
-      image:
-        "https://www.comicsense.store/wp-content/uploads/2022/04/walhalla.jpg.webp",
-      title: "Walhalla T-Shirt",
-      description:
-        "This is one of the very cool Tokyo Revengers Walhalla tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "700",
     },
     {
       id: 11,
@@ -134,8 +125,8 @@ export const productData = {
         "https://www.comicsense.store/wp-content/uploads/2022/09/illmurder_tiedye_comicsense-1.jpg",
       title: "Gojo Satoru T-Shirt",
       description:
-        "This is one of the very cool Jujtsu Kaisen Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Jujtsu Kaisen - JJK Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
+      price: "900",
     },
     {
       id: 12,
@@ -144,16 +135,16 @@ export const productData = {
       title: "Itachi Uchiha T-Shirt",
       description:
         "This is one of the very cool Naruto Itachi Uchiha tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "800",
     },
     {
       id: 13,
       image:
-        "https://www.comicsense.store/wp-content/uploads/2022/11/tokyorevengers_tokyomanji_bomberjacket_listing7_hitanshi-scaled.jpg",
-      title: "Tokyo Revengers Bomber Jacket",
+        "https://www.comicsense.store/wp-content/uploads/2021/03/aot_attackontitan_bomber_listing7_hitanshi-scaled.jpg",
+      title: "AOT Bomber Jacket",
       description:
-        "This is Tokyo Revegers Bomber Jacket one of the very cool jacket you can get, super fine, super cool, looks so attractive on onself.",
-      price: "1400",
+        "This is Attack on Titan Bomber Jacket one of the very cool jacket you can get, super fine, super cool, looks so attractive on onself.",
+      price: "1800",
     },
     {
       id: 14,
@@ -162,7 +153,7 @@ export const productData = {
       title: "Naruto T-Shirt",
       description:
         "This is one of the very cool Naruto Kurama Mode tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "700",
     },
     {
       id: 15,
@@ -177,9 +168,9 @@ export const productData = {
       id: 16,
       image:
         "https://www.comicsense.store/wp-content/uploads/2022/11/tokyorevengers_walhallapremium_bomberjacket_listing7_hitanshi-scaled.jpg",
-      title: "Walhalla T-Shirt",
+      title: "Walhalla Bomber Jacket",
       description:
-        "This is one of the very cool Tokyo Revengers Walhalla tshirt you can get, super fine, super cool, looks so attractive on onself.",
+        "This is one of the very cool Tokyo Revengers Walhalla Bomber Jacket you can get, super fine, super cool, looks so attractive on onself.",
       price: "400",
     },
     {
@@ -188,8 +179,8 @@ export const productData = {
         "https://www.comicsense.store/wp-content/uploads/2022/03/jjk_sixeyessorceror_tee_listing2_hitanshi-1-768x1024.jpg",
       title: "Gojo Satoru T-Shirt",
       description:
-        "This is one of the very cool Jujtsu Kaisen Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Jujtsu Kaisen - JJK Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
+      price: "850",
     },
     {
       id: 18,
@@ -198,7 +189,7 @@ export const productData = {
       title: "Itachi Uchiha T-Shirt",
       description:
         "This is one of the very cool Naruto Itachi Uchiha tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+      price: "600",
     },
     {
       id: 19,
@@ -212,11 +203,11 @@ export const productData = {
     {
       id: 20,
       image:
-        "https://www.comicsense.store/wp-content/uploads/2021/03/back.jpg",
-      title: "Naruto T-Shirt",
+        "https://www.comicsense.store/wp-content/uploads/2023/01/what_a_drag_hoodie_front_comicsense.jpg",
+      title: "Shikamaru Hoodie",
       description:
-        "This is one of the very cool Naruto Kurama Mode tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Naruto Mendokusai Hoodie (Oversize Drop-Shoulder) you can get, super fine, super cool, looks so attractive on onself.",
+      price: "1900",
     },
     {
       id: 21,
@@ -230,11 +221,11 @@ export const productData = {
     {
       id: 22,
       image:
-        "https://www.comicsense.store/wp-content/uploads/2022/11/tokyorevengers_walhallapremium_bomberjacket_listing7_hitanshi-scaled.jpg",
-      title: "Walhalla T-Shirt",
+        "https://www.comicsense.store/wp-content/uploads/2022/02/fushiguro2_comicsense.jpg.webp",
+      title: "Megumi T-Shirt",
       description:
-        "This is one of the very cool Tokyo Revengers Walhalla tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Jujutsu Kaisen JJK Megumi Divine Shikigami tshirt you can get, super fine, super cool, looks so attractive on onself.",
+      price: "600",
     },
     {
       id: 23,
@@ -242,17 +233,26 @@ export const productData = {
         "https://www.comicsense.store/wp-content/uploads/2023/06/jjk_strongestsorceror_tee_listing2_hitanshi-scaled.jpg",
       title: "Gojo Satoru T-Shirt",
       description:
-        "This is one of the very cool Jujtsu Kaisen Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool Jujtsu Kaisen - JJK Gojo Satoru tshirt you can get, super fine, super cool, looks so attractive on onself.",
+      price: "800",
     },
     {
       id: 24,
       image:
-        "https://www.comicsense.store/wp-content/uploads/2022/07/itachi-oversized1_listing_comicsense.jpg",
-      title: "Itachi Uchiha T-Shirt",
+        "https://www.comicsense.store/wp-content/uploads/2021/12/sukuna_hoodie_front_comicsense-1.jpg.webp",
+      title: "Sukuna Hoodie",
       description:
-        "This is one of the very cool Naruto Itachi Uchiha tshirt you can get, super fine, super cool, looks so attractive on onself.",
-      price: "400",
+        "This is one of the very cool JJK Jujutsu Kaisen Sukuna Hoodie you can get, super fine, super cool, looks so attractive on onself.",
+      price: "1100",
+    },
+    {
+      id: 25,
+      image:
+        "https://www.comicsense.store/wp-content/uploads/2021/03/kakashi_chidori_hoodi_back_comicsense.jpg",
+      title: "Kakashi Hatake Chidori- Naruto",
+      description:
+        "This is one of the very cool Kakashi Hatake Chidori- Naruto Hoodie you can get, super fine, super cool, looks so attractive on onself.",
+      price: "1200",
     },
   ],
 };
