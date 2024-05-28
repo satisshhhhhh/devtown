@@ -114,7 +114,8 @@ const App = () => {
     border: 1px solid lightgrey;
     color: white;
     padding: 5px;
-    width: 60%;
+    width: 50%;
+    margin-right: 1rem;
   `;
 
   const Input = styled.input`
@@ -230,9 +231,9 @@ const App = () => {
             </select>
           </Wrapper>
         </Container>
-        <h1 style={{ marginTop: "15px", textAlign: "center" }}>
+        {/* <h1 style={{ marginTop: "15px", textAlign: "center" }}>
           The below products are coming from data.js
-        </h1>
+        </h1> */}
         {loading ? (
           <h2>Loading...</h2>
         ) : (
