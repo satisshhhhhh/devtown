@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/devtown/static/js/main.34d7921d.js",
+    "main.js": "/devtown/static/js/main.e19f552f.js",
     "index.html": "/devtown/index.html",
-    "main.34d7921d.js.map": "/devtown/static/js/main.34d7921d.js.map"
+    "main.e19f552f.js.map": "/devtown/static/js/main.e19f552f.js.map"
   },
   "entrypoints": [
-    "static/js/main.34d7921d.js"
+    "static/js/main.e19f552f.js"
   ]
 }
