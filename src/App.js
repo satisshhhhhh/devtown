@@ -1,283 +1,262 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import SearchIcon from "./search-icon-light.png";
+import { FaSearch, FaSortAmountDown, FaSortAmountUp } from "react-icons/fa";
 import { productData } from "./data";
 
 const App = () => {
   const [loading, setLoading] = useState(productData.loading);
-  const [pproducts, setPproducts] = useState(productData.pproducts);
+  const [products, setProducts] = useState(productData.pproducts);
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("asc");
-
-  useEffect(() => {
-    if (sort === "asc") {
-      setPproducts((prevProducts) => [...prevProducts].sort((a, b) => a.price - b.price));
-    } else {
-      setPproducts((prevProducts) => [...prevProducts].sort((a, b) => b.price - a.price));
-    }
-  }, [sort]);
-
-  // const handleFilterChange = (e) => {
-  //   const inputValue = e.target.value;
-  //   setFilter(inputValue);
-  // };
-
-  const handleFilterChange = (e) => {
-    const inputValue = e.target.value.trim();
-    setFilter(inputValue);
-  
-    // Filter products based on the input value as the user types
-    const filteredProducts = productData.pproducts.filter((product) => {
-      const wordsInTitle = product.title.split(/\s+/);
-      const wordsInDescription = product.description.split(/\s+/);
-      const allWords = [...wordsInTitle, ...wordsInDescription];
-  
-      return allWords.some((word) =>
-        word.toLowerCase().includes(inputValue.toLowerCase())
-      );
-    });
-  
-    // Update the filtered products in the state
-    setPproducts(filteredProducts);
-  };
-
-  
-  const handleSortChange = (e) => {
-    setSort(e.target.value);
-  };
-
-  const filteredProducts = pproducts.filter((product) => {
-    const words = product.title.split(" ");
-    const match = words.some((word) =>
-      word.toLowerCase().startsWith(filter.toLowerCase())
-    );
-    return match;
-  });
-
   const [currentPage, setCurrentPage] = useState(1);
   const [productsPerPage] = useState(8);
 
-  // Change page
+  useEffect(() => {
+    const sortedProducts = [...products].sort((a, b) =>
+      sort === "asc" ? a.price - b.price : b.price - a.price
+    );
+    setProducts(sortedProducts);
+  }, [sort]);
+
+  const handleFilterChange = (e) => {
+    const inputValue = e.target.value.trim().toLowerCase();
+    setFilter(inputValue);
+    setCurrentPage(1);
+
+    const filteredProducts = productData.pproducts.filter((product) =>
+      product.title.toLowerCase().includes(inputValue) ||
+      product.description.toLowerCase().includes(inputValue)
+    );
+
+    setProducts(filteredProducts);
+  };
+
+  const handleSortChange = () => {
+    setSort(prevSort => prevSort === "asc" ? "desc" : "asc");
+  };
+
   const handlePageChange = (newPage) => {
     setCurrentPage(newPage);
   };
 
-  // Get current products
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
-  const currentProducts = filteredProducts.slice(
-    indexOfFirstProduct,
-    indexOfLastProduct
-  );
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
 
   const pageNumbers = [];
-  for (
-    let i = 1;
-    i <= Math.ceil(filteredProducts.length / productsPerPage);
-    i++
-  ) {
+  for (let i = 1; i <= Math.ceil(products.length / productsPerPage); i++) {
     pageNumbers.push(i);
   }
 
-  const Pagination = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    padding: 0 2rem 2rem 0 ;
-  `;
-
-  const Title = styled.h1`
-    color: white;
-    display: flex;
-    justify-cotent: center;
-    align-items: center;
-    margin-right: 2rem;
-  `;
-
-  const PageNumber = styled.button`
-    background-color: #dcdedd;
-    padding: 8px 16px;
-    border-radius: 8px;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-
-    &:hover {
-      background-color: #f1f1f1;
-    }
-  `;
-
-  const Container = styled.div`
-    height: 90px;
-    background-color: black;
-  `;
-
-  const Wrapper = styled.div`
-    padding: 20px 20px;
-    display: flex;
-    justify-content: center;
-  `;
-
-  const SearchContainer = styled.div`
-    display: flex;
-    justify-cotent: center;
-    align-items: center;
-    border: 1px solid lightgrey;
-    color: white;
-    padding: 8px;
-    width: 50%;
-    margin-right: 1rem;
-  `;
-
-  const Input = styled.input`
-    border: none;
-    background: transparent;
-    color: white;
-    pading: 15px;
-    width: 94%;
-    font-size: 23px;
-  `;
-
-  const ProductList = styled.div`
-    padding: 0 1rem;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-gap: 25px;
-    margin: 32px 0;
-    align-self: center;
-    justify-self: center;
-  `;
-
-  // const Product = styled.div`
-  //   display: flex;
-  //   flex-direction: column;
-  //   background-color: #f9f9f9;
-  //   padding: 16px;
-  //   border-radius: 8px;
-  //   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  //   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  //   &:hover {
-  //     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-  //       0 10px 10px rgba(0, 0, 0, 0.22);
-  //   }
-  // `;
-
-  const Product = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    background-color: #f9f9f9;
-    padding: 16px;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    max-width: 300px;
-    &:hover {
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-        0 10px 10px rgba(0, 0, 0, 0.22);
-    }
-  `;
-
-  const ProductInfo = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 8px;
-  `;
-
-  // const ProductImage = styled.img`
-  //   width: 100%;
-  //   height: auto;
-  //   object-fit: cover;
-  // `;
-
-  const ProductImageContainer = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: 1fr;
-    gap: 16px;
-  `;
-
-  const ProductImage = styled.img`
-    width: 100%;
-    height: 90%;
-    object-fit: cover;
-    aspect-ratio: 4 / 3;
-  `;
-
-  const ProductTitle = styled.h2`
-    font-size: 24px;
-    margin: 16px 0;
-    max-width: 300px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  `;
-
-  const ProductDescription = styled.p`
-    font-size: 16px;
-    margin: 8px 0;
-  `;
-
-  const ProductPrice = styled.p`
-    font-size: 18px;
-    font-weight: bold;
-    margin: 8px 0;
-  `;
-
   return (
-    <>
-      <div className="App">
-        <Container>
-          <Wrapper>
-            {/* <SearchContainer>
-              <Input
-                type="text"
-                placeholder="Search Products"
-                value={filter}
-                onChange={handleFilterChange}
-              />
-              <img src={SearchIcon} style={{ width: "30px" }} />
-            </SearchContainer> */}
-            <Title>Anime Merchandise</Title>
-            <select value={sort} onChange={handleSortChange} style={{ padding: '10px' }}>
-              <option value="asc">Low to High</option>
-              <option value="desc">High to Low</option>
-            </select>
-          </Wrapper>
-        </Container>
-        {/* <h1 style={{ marginTop: "15px", textAlign: "center" }}>
-          The below products are coming from data.js
-        </h1> */}
-        {loading ? (
-          <h2>Loading...</h2>
-        ) : (
+    <AppContainer>
+      <Header>
+        <Title>Anime Merchandise</Title>
+        <SearchContainer>
+          <SearchInput
+            type="text"
+            placeholder="Search Products"
+            value={filter}
+            onChange={handleFilterChange}
+          />
+          <SearchIcon />
+        </SearchContainer>
+        <SortButton onClick={handleSortChange}>
+          {sort === "asc" ? <FaSortAmountUp /> : <FaSortAmountDown />}
+        </SortButton>
+      </Header>
+
+      {loading ? (
+        <LoadingMessage>Loading...</LoadingMessage>
+      ) : (
+        <>
           <ProductList>
             {currentProducts.map((product) => (
-              <Product key={product.id}>
-                <ProductTitle>{product.title}</ProductTitle>
-                <ProductImageContainer>
-                  <ProductImage src={product.image} />
-                </ProductImageContainer>
+              <ProductCard key={product.id}>
+                <ProductImage src={product.image} alt={product.title} />
                 <ProductInfo>
+                  <ProductTitle>{product.title}</ProductTitle>
                   <ProductDescription>{product.description}</ProductDescription>
-                  <ProductPrice>Price: {product.price}</ProductPrice>
+                  <ProductPrice>${product.price}</ProductPrice>
                 </ProductInfo>
-              </Product>
+              </ProductCard>
             ))}
           </ProductList>
-        )}
-        <Pagination>
-          {pageNumbers.map((number) => (
-            <PageNumber key={number} onClick={() => handlePageChange(number)}>
-              {number}
-            </PageNumber>
-          ))}
-        </Pagination>
-      </div>
-    </>
+          <Pagination>
+            {pageNumbers.map((number) => (
+              <PageNumber
+                key={number}
+                onClick={() => handlePageChange(number)}
+                active={currentPage === number}
+              >
+                {number}
+              </PageNumber>
+            ))}
+          </Pagination>
+        </>
+      )}
+    </AppContainer>
   );
 };
+
+// Styled components
+const AppContainer = styled.div`
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+`;
+
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+`;
+
+const Title = styled.h1`
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    margin-bottom: 15px;
+    text-align: center;
+  }
+`;
+
+const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  padding: 5px 15px;
+  flex-grow: 1;
+  max-width: 400px;
+  margin: 0 20px;
+
+  @media (max-width: 768px) {
+    margin: 15px 0;
+    max-width: 100%;
+  }
+`;
+
+const SearchInput = styled.input`
+  border: none;
+  background: transparent;
+  padding: 10px;
+  font-size: 1rem;
+  width: 100%;
+  &:focus {
+    outline: none;
+  }
+`;
+
+const SearchIcon = styled(FaSearch)`
+  color: #666;
+`;
+
+const SortButton = styled.button`
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #357abd;
+  }
+
+  @media (max-width: 768px) {
+    margin-top: 15px;
+  }
+`;
+
+const ProductList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+`;
+
+const ProductCard = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  }
+`;
+
+const ProductImage = styled.img`
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+`;
+
+const ProductInfo = styled.div`
+  padding: 15px;
+`;
+
+const ProductTitle = styled.h2`
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+  color: #333;
+`;
+
+const ProductDescription = styled.p`
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
+`;
+
+const ProductPrice = styled.p`
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #4a90e2;
+  margin: 0;
+`;
+
+const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+`;
+
+const PageNumber = styled.button`
+  background-color: ${props => props.active ? '#4a90e2' : '#f0f0f0'};
+  color: ${props => props.active ? 'white' : '#333'};
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: ${props => props.active ? '#357abd' : '#e0e0e0'};
+  }
+`;
+
+const LoadingMessage = styled.h2`
+  text-align: center;
+  color: #666;
+`;
 
 export default App;
